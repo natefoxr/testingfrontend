@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Text over TCP</title>
+</head>
+<body>
+    <h1>Send Text over TCP</h1>
+    <button id="sendButton">Send 'supergong'</button>
+
+    <script>
+        const sendButton = document.getElementById('sendButton');
+        
+        sendButton.addEventListener('click', () => {
+            // Create a WebSocket connection to the server
+            const socket = new WebSocket('ws://localhost:8080'); // Ensure your server is running at this address
+
+            socket.onopen = () => {
+                console.log('Connection established.');
+                // Send the text 'supergong' over the WebSocket
+                socket.send('supergong');
+                console.log("Message sent: 'supergong'");
+            };
+
+            socket.onmessage = (event) => {
+                console.log('Message received from server: ', event.data);
+            };
+
+            socket.onerror = (error) => {
+                console.log('WebSocket error: ', error);
+            };
+
+            socket.onclose = () => {
+                console.log('WebSocket connection closed.');
+            };
+        });
+    </script>
+</body>
+</html>
