@@ -1,3 +1,4 @@
+// add button
 const sendButton = document.getElementById('sendButton');
         
 sendButton.addEventListener('click', () => {
