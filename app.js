@@ -1,9 +1,10 @@
 // add button
 const triggerGong = document.getElementById('triggerId');
-const uniqueId = document.getElementById('uniqueId');
-const targetId = document.getElementById('targetId');
         
 triggerGong.addEventListener('click', () => {
+        // Add Variables
+        var uniqueId = document.getElementById('uniqueId');
+        var targetId = document.getElementById('targetId');
         // Trigger the supergong
         targetId.innterHTML = "150000";
         setTimeout(function(){
