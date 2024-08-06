@@ -1,26 +1,18 @@
 // add button
-const sendButton = document.getElementById('sendButton');
+const triggerGong = document.getElementById('triggerGong');
+const uniqueId = document.getElementById('uniqueId');
+const targetId = document.getElementById('targetId');
         
-sendButton.addEventListener('click', () => {
-    // Create a WebSocket connection to the server
-    const socket = new WebSocket('ws://localhost:8080'); // Ensure your server is running at this address
-
-    socket.onopen = () => {
-        console.log('Connection established.');
-        // Send the text 'supergong' over the WebSocket
-        socket.send('supergong');
-        console.log("Message sent: 'supergong'");
-    };
-
-    socket.onmessage = (event) => {
-        console.log('Message received from server: ', event.data);
-    };
-
-    socket.onerror = (error) => {
-        console.log('WebSocket error: ', error);
-    };
-
-    socket.onclose = () => {
-        console.log('WebSocket connection closed.');
-    };
+triggerGong.addEventListener('click', () => {
+        // Trigger the supergong
+        targetId.innterHTML = 150000;
+        setTimeout(function(){
+                console.log("Sending Super Gong Trigger")
+        }, 2000);
+        
+        uid = +uniqueId;
+        uniqueId.innerHTML = uid + 1;
+        targetId.innterHTML = 500000;
 });
+
+
